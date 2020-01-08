@@ -30,7 +30,7 @@ ENV LIVY_VERSION 0.6.0
 ENV KYLIN_VERSION 3.0.0-alpha2
 
 ENV JAVA_HOME /home/admin/jdk1.8.0_141
-ENV MVN_HOME /home/admin/apache-maven-3.6.1
+ENV MVN_HOME /home/admin/apache-maven-3.6.3
 ENV HADOOP_HOME /home/admin/hadoop-$HADOOP_VERSION
 ENV HIVE_HOME /home/admin/apache-hive-$HIVE_VERSION-bin
 ENV HADOOP_CONF $HADOOP_HOME/etc/hadoop
@@ -51,9 +51,10 @@ WORKDIR /home/admin
 RUN yum -y install lsof.x86_64 wget.x86_64 tar.x86_64 git.x86_64 mysql-server.x86_64 mysql.x86_64 unzip.x86_64
 
 # install mvn
-RUN wget https://archive.apache.org/dist/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz \
-    && tar -zxvf apache-maven-3.6.1-bin.tar.gz \
-    && rm -f apache-maven-3.6.1-bin.tar.gz
+# RUN wget http://mirrors.ocf.berkeley.edu/apache/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz \
+RUN wget http://mirror.cc.columbia.edu/pub/software/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz \
+    && tar -zxvf apache-maven-3.6.3-bin.tar.gz \
+    && rm -f apache-maven-3.6.3-bin.tar.gz
 COPY conf/maven/settings.xml $MVN_HOME/conf/settings.xml
 
 # install npm
